@@ -10,8 +10,7 @@
     "start": "vite"
   },
   "dependencies": {
-    "@zappar/zappar-js": "^2.10.1",
-    "@zappar/zappar-threejs": "^2.10.1",
+    "@zappar/zappar-threejs": "latest",
     "three": "^0.160.0",
     "firebase": "^10.7.0"
   },
