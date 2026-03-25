@@ -12,11 +12,11 @@
   "dependencies": {
     "@zappar/zappar-js": "^2.10.1",
     "@zappar/zappar-threejs": "^2.10.1",
-    "three": "^r128",
+    "three": "^0.160.0",
     "firebase": "^10.7.0"
   },
   "devDependencies": {
     "vite": "^5.0.0",
-    "@types/three": "^r128"
+    "@types/three": "^0.160.0"
   }
 }
