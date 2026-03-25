@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import { ZapparThree } from '@zappar/zappar-threejs';
+
+// ZapparThree se cargará desde CDN global (ver index.html)
 
 export class ARManager {
     constructor(scene, camera, renderer, firebaseManager) {
@@ -23,8 +24,13 @@ export class ARManager {
 
     async init() {
         try {
+            // Verificar que Zappar se cargó desde CDN
+            if (!window.ZapparThree) {
+                throw new Error('Zappar SDK no cargó correctamente');
+            }
+
             // Crear Instant Tracker para detectar superficies
-            const zappar = new ZapparThree();
+            const zappar = new window.ZapparThree();
             this.instantTracker = zappar.createInstantTracker();
             this.scene.add(this.instantTracker.anchor);
 

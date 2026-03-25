@@ -1,8 +1,9 @@
 import * as THREE from 'three';
-import { ZapparThree } from '@zappar/zappar-threejs';
 import { FirebaseManager } from './firebase-manager.js';
 import { ARManager } from './ar-manager.js';
 import { UIManager } from './ui-manager.js';
+
+// Zappar se cargará desde CDN globalmente (ver index.html)
 
 let zappar, scene, camera, renderer, arManager, firebaseManager, uiManager;
 
@@ -33,6 +34,11 @@ async function init() {
 }
 
 function setupThreeJS() {
+    // Verificar que Zappar se cargó desde CDN
+    if (!window.ZapparThree) {
+        throw new Error('Zappar SDK no cargó correctamente. Verifica tu conexión a internet.');
+    }
+
     // Scene
     scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000000);
@@ -55,8 +61,8 @@ function setupThreeJS() {
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.xr.enabled = true;
 
-    // Zappar
-    zappar = new ZapparThree();
+    // Zappar (desde CDN global)
+    zappar = new window.ZapparThree();
     renderer.xr.setSession(zappar.session);
 
     // Setup Zappar camera
